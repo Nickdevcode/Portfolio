@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicolas Carvalho - Portfólio</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo" id="logo-home">
+                <div class="logo-icon">
+                    <span class="logo-n">N</span>
+                    <span class="logo-brackets">&lt;/&gt;</span>
+                </div>
+            </a>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#sobre" class="nav-link" data-section="sobre">Sobre mim</a>
+                <a href="#portfolio" class="nav-link" data-section="portfolio">Portfólio</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#carreira" class="nav-link" data-section="carreira">Carreira</a>
+                <a href="#contato" class="nav-link" data-section="contato">Contato</a>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+        <div class="sidebar-header">
+            <a href="#" class="sidebar-logo" id="sidebar-logo-home">
+                <div class="logo-icon">
+                    <span class="logo-n">N</span>
+                    <span class="logo-brackets">&lt;/&gt;</span>
+                </div>
+            </a>
+            <button class="sidebar-close" id="sidebar-close" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="#home" class="sidebar-link active" data-section="home">Home</a>
+            <a href="#sobre" class="sidebar-link" data-section="sobre">Sobre mim</a>
+            <a href="#portfolio" class="sidebar-link" data-section="portfolio">Portfólio</a>
+            <a href="#skills" class="sidebar-link" data-section="skills">Skills</a>
+            <a href="#carreira" class="sidebar-link" data-section="carreira">Carreira</a>
+            <a href="#contato" class="sidebar-link" data-section="contato">Contato</a>
+        </div>
+    </nav>
+
+    <main class="main" id="home">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="left-content">
+                    <div class="greeting-badge">
+                        <i class="fas fa-hand wave-emoji" aria-label="Mão acenando"></i>
+                        <span class="greeting-text">Saudações!</span>
+                    </div>
+                    <h1 class="name">Nicolas<br>Carvalho</h1>
+                    <p class="profession">Front-end developer · Futuro FullStack</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Nicolas-Carvalho-22B-UNASP" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nickx.carv_/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="center-content">
+                    <div class="avatar-container">
+                        <div class="avatar-circle"></div>
+                        <div class="avatar-image">
+                            <img src="img/perfil.png" alt="Nicolas Carvalho">
+                        </div>
+                        <div class="tech-icon html-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <div class="tech-icon css-icon">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <div class="tech-icon js-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-content">
+                    <a href="#" class="download-cv" id="btn-download-cv">
+                        <i class="fas fa-download"></i>
+                        Baixar CV
+                    </a>
+                    <button class="contact-button" id="btn-conversar">
+                        <i class="fas fa-comment"></i>
+                        Vamos conversar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="section-divider"></div>
+
+    <section class="about-section" id="sobre">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <div class="about-photo-frame">
+                        <img src="img/perfil_variante.png" alt="Nicolas Carvalho">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="about-badge">
+                        <i class="fas fa-star sparkle-emoji" aria-label="Brilho"></i>
+                        <span class="about-badge-text">Sobre mim</span>
+                    </div>
+                    <h2 class="about-name">Nicolas Carvalho</h2>
+                    <ul class="about-list">
+                        <li class="about-item">
+                            <i class="fas fa-hand about-emoji" aria-label="Mão acenando"></i>
+                            <span class="about-text">Me chamo Nicolas Carvalho. Prazer em conhecê-lo!</span>
+                        </li>
+                        <li class="about-item">
+                            <i class="fas fa-laptop-code about-emoji" aria-label="Pessoa programando"></i>
+                            <span class="about-text">Desenvolvedor estudante de 18 anos PCD, dedicado e colaborativo. Experiência em resolução de problemas, teamwork, sites e apps web responsivas.</span>
+                        </li>
+                        <li class="about-item">
+                            <i class="fas fa-graduation-cap about-emoji" aria-label="Capelo"></i>
+                            <span class="about-text">Cursando 3º ano do Ensino Médio com TI na UNASP SP.</span>
+                        </li>
+                        <li class="about-item">
+                            <i class="fas fa-lightbulb about-emoji" aria-label="Lâmpada"></i>
+                            <span class="about-text">Interesses em desenvolvimento Front-end com HTML, CSS, JavaScript e futuro Full-Stack.</span>
+                        </li>
+                        <li class="about-item">
+                            <i class="fas fa-rocket about-emoji" aria-label="Foguete"></i>
+                            <span class="about-text">Paixão por desafios. Sonho: ser Full-Stack em grande empresa ou projeto.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="portfolio-header">
+                <div class="portfolio-badge">
+                    <i class="fas fa-briefcase portfolio-emoji" aria-label="Portfólio"></i>
+                    <span>Portfólio</span>
+                </div>
+                <h2 class="portfolio-title">Trabalhos e projetos</h2>
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="todos">
+                        <i class="fas fa-th"></i>
+                        <span>Todos</span>
+                    </button>
+                    <button class="filter-btn" data-filter="front-end">
+                        <i class="fas fa-code"></i>
+                        <span>Front-end</span>
+                    </button>
+                    <button class="filter-btn" data-filter="back-end">
+                        <i class="fas fa-server"></i>
+                        <span>Back-end</span>
+                    </button>
+                    <button class="filter-btn" data-filter="full-stack">
+                        <i class="fas fa-layer-group"></i>
+                        <span>Full-stack</span>
+                    </button>
+                </div>
+            </div>
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Projetos serão inseridos via JavaScript -->
+            </div>
+            <div class="portfolio-footer">
+                <a href="#" class="ver-mais-projetos" id="ver-mais-projetos">
+                    Ver mais projetos →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="skills-badge">
+                <i class="fas fa-bullseye skills-emoji" aria-label="Habilidades"></i>
+                <span>Skills · Habilidades</span>
+            </div>
+            <h2 class="skills-title">Tecnologias e habilidades</h2>
+            
+            <div class="skills-content">
+                <div class="skills-group">
+                    <h3 class="skills-subtitle">Techs que uso no dia a dia</h3>
+                    <div class="tech-icons-container">
+                        <div class="tech-icon-item" data-tech="HTML" title="HTML5">
+                            <i class="fab fa-html5"></i>
+                            <span class="tech-name">HTML</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="CSS" title="CSS3">
+                            <i class="fab fa-css3-alt"></i>
+                            <span class="tech-name">CSS</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="JavaScript" title="JavaScript">
+                            <i class="fab fa-js"></i>
+                            <span class="tech-name">JavaScript</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="Node.js" title="Node.js">
+                            <i class="fab fa-node-js"></i>
+                            <span class="tech-name">Node.js</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="MySQL" title="MySQL">
+                            <i class="fas fa-database"></i>
+                            <span class="tech-name">MySQL</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="Java" title="Java">
+                            <i class="fab fa-java"></i>
+                            <span class="tech-name">Java</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="Python" title="Python">
+                            <i class="fab fa-python"></i>
+                            <span class="tech-name">Python</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="C++" title="C++">
+                            <span class="cpp-text">C++</span>
+                            <span class="tech-name">C++</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="GitHub" title="GitHub">
+                            <i class="fab fa-github"></i>
+                            <span class="tech-name">GitHub</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="Git" title="Git">
+                            <i class="fab fa-git-alt"></i>
+                            <span class="tech-name">Git</span>
+                        </div>
+                        <div class="tech-icon-item" data-tech="Hardware" title="Hardware">
+                            <i class="fas fa-microchip"></i>
+                            <span class="tech-name">Hardware</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-group">
+                    <h3 class="skills-subtitle">Habilidades gerais</h3>
+                    <div class="soft-skills-container">
+                        <div class="soft-skill-item">Facilidade de comunicação</div>
+                        <div class="soft-skill-item">Trabalho em equipe</div>
+                        <div class="soft-skill-item">Gestão de projetos</div>
+                        <div class="soft-skill-item">Liderança de equipe</div>
+                        <div class="soft-skill-item">Resolução de problemas</div>
+                        <div class="soft-skill-item">Organização</div>
+                        <div class="soft-skill-item">Adaptabilidade</div>
+                        <div class="soft-skill-item">Aprendizado contínuo</div>
+                        <div class="soft-skill-item">Facilidade de aprendizado</div>
+                        <div class="soft-skill-item">Pensamento crítico</div>
+                        <div class="soft-skill-item">Inteligência emocional</div>
+                        <div class="soft-skill-item">Criatividade</div>
+                        <div class="soft-skill-item">Gestão do tempo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="carreira-section" id="carreira">
+        <div class="container">
+            <div class="carreira-badge">
+                <i class="fas fa-briefcase carreira-emoji" aria-label="Carreira"></i>
+                <span>Carreira</span>
+            </div>
+            <h2 class="carreira-title">Trajetória até aqui</h2>
+            
+            <div class="carreira-content">
+                <div class="carreira-column">
+                    <div class="carreira-column-header">
+                        <h3 class="carreira-column-title">Área profissional</h3>
+                        <span class="carreira-column-period">2024 · Atualmente</span>
+                    </div>
+                    <div class="carreira-cards">
+                        <div class="carreira-card">
+                            <h4 class="carreira-card-title">Em breve</h4>
+                            <p class="carreira-card-description">Procurando oportunidades freelancers enquanto estou no ensino médio. Busco projetos em desenvolvimento web (front-end), backends e sistemas que me permitam aplicar e expandir meus conhecimentos. Tenho conhecimento intermediário tanto em front-end quanto em back-end, e estou disposto a me desafiar em diferentes tipos de projetos e tecnologias.</p>
+                            <div class="carreira-card-meta">
+                                <span class="carreira-card-duration">Em busca</span>
+                                <span class="carreira-card-dates">Atualmente</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carreira-column">
+                    <div class="carreira-column-header">
+                        <h3 class="carreira-column-title">Acadêmica</h3>
+                        <span class="carreira-column-period">2024 · Atualmente</span>
+                    </div>
+                    <div class="carreira-cards">
+                        <div class="carreira-card">
+                            <h4 class="carreira-card-title">Curso de Tecnologia da Informação integrado ao ensino médio</h4>
+                            <p class="carreira-card-description">Cursando o curso técnico de Tecnologia da Informação integrado ao ensino médio no Centro Universitário Adventista de São Paulo (UNASP). Finalizei o segundo ano, tanto do ensino médio quanto do curso técnico. O curso abrange programação, desenvolvimento web, banco de dados, redes e outras áreas essenciais da TI.</p>
+                            <div class="carreira-card-meta">
+                                <span class="carreira-card-duration">Cursando</span>
+                                <span class="carreira-card-dates">Janeiro/2024 - Dezembro/2026</span>
+                            </div>
+                        </div>
+                        <div class="carreira-card">
+                            <h4 class="carreira-card-title">Cursando o ensino médio</h4>
+                            <p class="carreira-card-description">Cursando o ensino médio no Centro Universitário Adventista de São Paulo (UNASP), com previsão de conclusão em dezembro de 2026. O ensino médio está integrado ao curso técnico de Tecnologia da Informação, proporcionando uma formação completa e alinhada com as demandas do mercado.</p>
+                            <div class="carreira-card-meta">
+                                <span class="carreira-card-duration">Cursando</span>
+                                <span class="carreira-card-dates">Janeiro/2024 - Dezembro/2026</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="contato-section" id="contato">
+        <div class="container">
+            <div class="contato-badge">
+                <i class="fas fa-users contato-emoji" aria-label="Contatos"></i>
+                <span>Contatos</span>
+            </div>
+            <h2 class="contato-title">Vamos conversar!</h2>
+            
+            <div class="contato-content">
+                <a href="https://wa.me/5511975652841" target="_blank" rel="noopener noreferrer" class="contato-btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Vamos conversar</span>
+                </a>
+                
+                <div class="contato-email-section">
+                    <div class="contato-email-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="contato-email-info">
+                        <span class="contato-email-label">E-mail:</span>
+                        <span class="contato-email-address" id="email-address">nickcarva31@gmail.com</span>
+                    </div>
+                    <button class="contato-email-copy" id="btn-copy-email" aria-label="Copiar e-mail">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+
+            <a href="#home" class="contato-voltar-topo" id="voltar-topo">
+                <i class="fas fa-arrow-up"></i>
+                <span>Voltar ao topo</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-copyright">Copyright © Nicolas Carvalho - <span id="ano-atual"></span></p>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Nicolas-Carvalho-22B-UNASP" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/nickx.carv_/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Projeto -->
+    <div class="modal-overlay" id="modal-projeto">
+        <div class="modal-container modal-projeto-container">
+            <button class="modal-close" id="close-modal-projeto" aria-label="Fechar modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-projeto-content" id="modal-projeto-content">
+                <!-- Conteúdo será inserido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Download CV -->
+    <div class="modal-overlay" id="modal-cv">
+        <div class="modal-container">
+            <button class="modal-close" id="close-modal-cv" aria-label="Fechar modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <h2 class="modal-title">Baixar Currículo</h2>
+                <p class="modal-description">Escolha o idioma do currículo que deseja baixar:</p>
+                <div class="modal-buttons">
+                    <a href="assets/curriculo_nicolascarvalho.pdf" download class="modal-btn modal-btn-primary">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>Português</span>
+                    </a>
+                    <a href="assets/curriculo_nicolascarvalho_inglês.pdf" download class="modal-btn modal-btn-secondary">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>English</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vamos Conversar -->
+    <div class="modal-overlay" id="modal-contato">
+        <div class="modal-container">
+            <button class="modal-close" id="close-modal-contato" aria-label="Fechar modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <h2 class="modal-title">Vamos Conversar</h2>
+                <p class="modal-description">Escolha como deseja entrar em contato:</p>
+                <div class="modal-buttons">
+                    <a href="https://wa.me/5511975652841" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="mailto:nickcarva31@gmail.com?subject=Contato%20via%20Portfólio&body=Olá%20Nicolas,%0D%0A%0D%0A" class="modal-btn modal-btn-email" id="btn-email">
+                        <i class="fas fa-envelope"></i>
+                        <span>E-mail</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
