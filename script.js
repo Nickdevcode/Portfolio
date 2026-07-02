@@ -6,6 +6,115 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuOverlay = document.getElementById('menu-overlay');
     const sidebarClose = document.getElementById('sidebar-close');
     const sidebarLogoHome = document.getElementById('sidebar-logo-home');
+
+    /* ==========================================================================
+       INTERNACIONALIZAÇÃO (i18n) — Português / Inglês
+       Troca todos os textos marcados com data-i18n em tempo real, sem recarregar.
+       A escolha é persistida no localStorage e o <html lang> é atualizado.
+       ========================================================================== */
+    const IDIOMAS_SUPORTADOS = ['pt', 'en'];
+    const IDIOMA_PADRAO = 'pt';
+    const STORAGE_KEY = 'idioma';
+
+    // Guarda espaço para funções definidas mais abaixo (projetos), invocadas na troca.
+    let renderizarProjetos = function () {};
+
+    /**
+     * Determina o idioma inicial na seguinte ordem de prioridade:
+     * 1. Escolha salva anteriormente pelo usuário (localStorage).
+     * 2. Idioma preferido do navegador (se suportado).
+     * 3. Português como padrão.
+     */
+    function detectarIdiomaInicial() {
+        const salvo = localStorage.getItem(STORAGE_KEY);
+        if (salvo && IDIOMAS_SUPORTADOS.includes(salvo)) {
+            return salvo;
+        }
+        const navegador = (navigator.language || 'pt').toLowerCase();
+        if (navegador.startsWith('en')) {
+            return 'en';
+        }
+        return IDIOMA_PADRAO;
+    }
+
+    let idiomaAtual = detectarIdiomaInicial();
+
+    /** Retorna a descrição de um projeto no idioma ativo, com fallback para PT. */
+    function descricaoProjeto(projeto) {
+        const porIdioma = (typeof projectTranslations !== 'undefined' && projectTranslations[idiomaAtual]) || {};
+        return porIdioma[projeto.id] || projeto.descricao;
+    }
+
+    /**
+     * Retorna a tradução de uma chave no idioma ativo (para textos gerados via JS,
+     * como as tags e botões dos cards). Cai para PT e, por fim, para a própria chave.
+     */
+    function t(chave) {
+        const dict = translations[idiomaAtual] || translations[IDIOMA_PADRAO];
+        return dict[chave] !== undefined ? dict[chave] : chave;
+    }
+
+    /**
+     * Aplica as traduções do idioma informado a toda a página:
+     * - Elementos com data-i18n têm o texto substituído.
+     * - Elementos com data-i18n-attr têm um atributo substituído
+     *   (formato "atributo:chave", ex.: "aria-label:lang.toggleLabel").
+     * - Atualiza <html lang>, o estado visual dos botões e re-renderiza os projetos.
+     */
+    function aplicarTraducoes(idioma) {
+        if (!IDIOMAS_SUPORTADOS.includes(idioma)) {
+            idioma = IDIOMA_PADRAO;
+        }
+        idiomaAtual = idioma;
+        const dict = translations[idioma] || translations[IDIOMA_PADRAO];
+
+        // Textos
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const chave = el.getAttribute('data-i18n');
+            if (dict[chave] !== undefined) {
+                el.textContent = dict[chave];
+            }
+        });
+
+        // Atributos (ex.: aria-label)
+        document.querySelectorAll('[data-i18n-attr]').forEach(el => {
+            // Permite múltiplos pares separados por vírgula: "attr1:chave1, attr2:chave2"
+            el.getAttribute('data-i18n-attr').split(',').forEach(par => {
+                const [attr, chave] = par.split(':').map(s => s.trim());
+                if (attr && chave && dict[chave] !== undefined) {
+                    el.setAttribute(attr, dict[chave]);
+                }
+            });
+        });
+
+        // Idioma do documento (acessibilidade + SEO)
+        document.documentElement.setAttribute('lang', idioma === 'en' ? 'en' : 'pt-BR');
+
+        // Estado visual dos botões de idioma (destaca PT ou EN)
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.classList.toggle('active', opt.getAttribute('data-lang') === idioma);
+        });
+
+        // Persiste a escolha
+        localStorage.setItem(STORAGE_KEY, idioma);
+
+        // Re-renderiza os cards de projeto para refletir as descrições traduzidas
+        renderizarProjetos();
+    }
+
+    /** Alterna entre PT e EN. */
+    function alternarIdioma() {
+        aplicarTraducoes(idiomaAtual === 'pt' ? 'en' : 'pt');
+    }
+
+    const langToggle = document.getElementById('lang-toggle');
+    const langToggleSidebar = document.getElementById('lang-toggle-sidebar');
+    if (langToggle) {
+        langToggle.addEventListener('click', alternarIdioma);
+    }
+    if (langToggleSidebar) {
+        langToggleSidebar.addEventListener('click', alternarIdioma);
+    }
     
     function abrirMenu() {
         sidebarMenu.classList.add('active');
@@ -158,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navigator.clipboard.writeText(email).then(function() {
                 const originalText = this.querySelector('span').textContent;
                 const originalIcon = this.querySelector('i').className;
-                this.querySelector('span').textContent = 'E-mail copiado!';
+                this.querySelector('span').textContent = t('js.emailCopiado');
                 this.querySelector('i').className = 'fas fa-check';
                 
                 setTimeout(() => {
@@ -474,9 +583,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         card.innerHTML = `
             <h3 class="card-title">${projeto.titulo}</h3>
-            <p class="card-description">${projeto.descricao}</p>
+            <p class="card-description">${descricaoProjeto(projeto)}</p>
             <div class="card-tags">
-                ${temOnline ? '<span class="card-tag online">Online</span>' : ''}
+                ${temOnline ? `<span class="card-tag online">${t('portfolio.online')}</span>` : ''}
                 ${tagsHTML}
             </div>
             <div class="card-preview">
@@ -488,7 +597,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
 
-    function renderizarProjetos() {
+    // Atribuída (não declarada) para reutilizar a referência criada no bloco i18n,
+    // permitindo que aplicarTraducoes() dispare a re-renderização dos projetos.
+    renderizarProjetos = function () {
         if (!portfolioGrid) return;
 
         portfolioGrid.innerHTML = '';
@@ -519,7 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             verMaisProjetos.style.display = 'none';
         }
-    }
+    };
 
     function atualizarFiltros() {
         filterBtns.forEach(btn => {
@@ -547,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalProjetoContent.innerHTML = `
             <div class="projeto-modal-header">
                 <h2 class="projeto-modal-title">${projeto.titulo}</h2>
-                <p class="projeto-modal-description">${projeto.descricao}</p>
+                <p class="projeto-modal-description">${descricaoProjeto(projeto)}</p>
                 <div class="projeto-modal-tags">
                     ${tagsHTML}
                 </div>
@@ -558,12 +669,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="projeto-modal-actions">
                 <a href="${projeto.repositorio}" target="_blank" rel="noopener noreferrer" class="projeto-modal-btn repositorio">
                     <i class="fab fa-github"></i>
-                    <span>Repositório</span>
+                    <span>${t('portfolio.modal.repositorio')}</span>
                 </a>
                 ${projeto.projeto !== '#' ? `
                 <a href="${projeto.projeto}" target="_blank" rel="noopener noreferrer" class="projeto-modal-btn projeto">
                     <i class="fas fa-external-link-alt"></i>
-                    <span>Ver Projeto</span>
+                    <span>${t('portfolio.modal.verProjeto')}</span>
                 </a>
                 ` : ''}
             </div>
@@ -635,6 +746,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    renderizarProjetos();
+    // Aplica o idioma inicial (detectado do localStorage/navegador) a toda a página.
+    // Isso também dispara a primeira renderização dos projetos, então substitui
+    // a antiga chamada isolada a renderizarProjetos().
+    aplicarTraducoes(idiomaAtual);
 });
 

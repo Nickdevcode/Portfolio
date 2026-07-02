@@ -197,6 +197,72 @@ img {
     }
 }
 
+/* Agrupa o botão de idioma e o hambúrguer à direita do header,
+   mantendo-os alinhados independentemente do breakpoint. */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Botão de idioma (PT | EN).
+   Segue o design system: fundo roxo translúcido, borda roxa e o idioma
+   ativo em destaque. O idioma inativo fica esmaecido para dar affordance
+   de "clique para trocar". */
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    min-height: 40px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.lang-toggle:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--cor-roxo-medio);
+    transform: translateY(-2px);
+}
+
+.lang-option {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+/* O idioma atualmente ativo recebe a classe .active via JS. */
+.lang-option.active {
+    color: var(--cor-roxo-claro);
+}
+
+.lang-divider {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 300;
+}
+
+/* Botão de idioma dentro do menu lateral (mobile): ocupa a largura toda,
+   separado dos links por uma borda superior. */
+.sidebar-lang {
+    margin-top: auto;
+    padding: 20px 24px;
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.lang-toggle-sidebar {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 14px;
+    min-height: 44px;
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -366,6 +432,11 @@ img {
     .menu-toggle {
         display: none;
     }
+
+    /* No desktop o idioma vive no header; o botão do sidebar fica oculto. */
+    .sidebar-lang {
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -375,6 +446,12 @@ img {
 
     .menu-toggle {
         display: flex;
+    }
+
+    /* No mobile o idioma vive dentro do menu lateral; o botão do header
+       (identificado pelo id) some para não duplicar o controle. */
+    #lang-toggle {
+        display: none;
     }
 }
 
@@ -595,27 +672,30 @@ img {
     animation: float 3s ease-in-out infinite;
 }
 
-.html-icon {
+/* Ícones flutuantes do Hero (React, TypeScript, Node.js):
+   herdam o roxo do tema para manter a identidade monocromática do site,
+   assim como os ícones da seção Skills. */
+.react-icon {
     top: 20px;
     left: -30px;
-    color: #E34F26;
+    color: var(--cor-roxo-medio);
     font-size: 32px;
     animation-delay: 0s;
 }
 
-.css-icon {
+.typescript-icon {
     bottom: 40px;
     left: -20px;
-    color: #1572B6;
+    color: var(--cor-roxo-medio);
     font-size: 32px;
     animation-delay: 1s;
 }
 
-.js-icon {
+.nodejs-icon {
     top: 50%;
     right: -40px;
     transform: translateY(-50%);
-    color: #F7DF1E;
+    color: var(--cor-roxo-medio);
     font-size: 32px;
     animation-delay: 2s;
 }
@@ -627,15 +707,15 @@ img {
         font-size: 28px;
     }
 
-    .html-icon {
+    .react-icon {
         left: -25px;
     }
 
-    .css-icon {
+    .typescript-icon {
         left: -15px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -35px;
     }
 }
@@ -647,17 +727,17 @@ img {
         font-size: 26px;
     }
 
-    .html-icon {
+    .react-icon {
         top: 15px;
         left: -20px;
     }
 
-    .css-icon {
+    .typescript-icon {
         bottom: 30px;
         left: -15px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -30px;
     }
 }
@@ -670,17 +750,17 @@ img {
         border-radius: 8px;
     }
 
-    .html-icon {
+    .react-icon {
         top: 10px;
         left: -10px;
     }
 
-    .css-icon {
+    .typescript-icon {
         bottom: 20px;
         left: -8px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -15px;
     }
 }
@@ -692,17 +772,17 @@ img {
         font-size: 18px;
     }
 
-    .html-icon {
+    .react-icon {
         top: 5px;
         left: -5px;
     }
 
-    .css-icon {
+    .typescript-icon {
         bottom: 15px;
         left: -5px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -10px;
     }
 }
@@ -820,17 +900,17 @@ img {
         font-size: 28px;
     }
 
-    .html-icon {
+    .react-icon {
         top: 15px;
         left: -20px;
     }
 
-    .css-icon {
+    .typescript-icon {
         bottom: 30px;
         left: -15px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -30px;
     }
 }
@@ -882,17 +962,17 @@ img {
         font-size: 24px;
     }
 
-    .html-icon {
+    .react-icon {
         top: 10px;
         left: -15px;
     }
 
-    .css-icon {
+    .typescript-icon {
         bottom: 20px;
         left: -10px;
     }
 
-    .js-icon {
+    .nodejs-icon {
         right: -25px;
     }
 
@@ -1976,6 +2056,26 @@ img {
     animation-delay: 5s;
 }
 
+.tech-icon-item:nth-child(12) {
+    animation-delay: 5.5s;
+}
+
+.tech-icon-item:nth-child(13) {
+    animation-delay: 6s;
+}
+
+.tech-icon-item:nth-child(14) {
+    animation-delay: 6.5s;
+}
+
+.tech-icon-item:nth-child(15) {
+    animation-delay: 7s;
+}
+
+.tech-icon-item:nth-child(16) {
+    animation-delay: 7.5s;
+}
+
 .tech-icon-item:hover {
     background: rgba(139, 92, 246, 0.2);
     border-color: var(--cor-roxo-claro);
@@ -2004,6 +2104,23 @@ img {
 
 .tech-icon-item:hover i {
     color: var(--cor-roxo-claro);
+}
+
+/* Ícones Devicon (React, Next.js, TypeScript, Tailwind, VS Code, IntelliJ):
+   herdam a cor roxa do tema para manter a identidade monocromática do site. */
+.tech-icon-item i[class^="devicon-"] {
+    color: var(--cor-roxo-medio);
+}
+
+.tech-icon-item:hover i[class^="devicon-"] {
+    color: var(--cor-roxo-claro);
+}
+
+/* O Devicon só oferece o Next.js como wordmark (logo por extenso), que é largo.
+   Reduzimos a escala para caber no card quadrado sem estourar a largura,
+   mantendo presença visual equilibrada com os demais ícones. */
+.tech-icon-wordmark i {
+    font-size: 0.85em;
 }
 
 @keyframes techFloat {
