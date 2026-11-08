@@ -951,7 +951,9 @@
         box-shadow 90ms var(--ease-padrao);
 }
 
-:root[data-tema='escuro'] .tecla {
+/* :not(.tecla--mod): sem isso, esta regra (mais específica) pintava as teclas
+   de categoria de cinza no escuro e o texto escuro delas ficava ilegível */
+:root[data-tema='escuro'] .tecla:not(.tecla--mod) {
     background:
         linear-gradient(180deg, color-mix(in srgb, white 7%, transparent), transparent 55%),
         var(--c-tecla);
