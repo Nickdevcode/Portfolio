@@ -1,0 +1,157 @@
+/* ==========================================================================
+   TOKENS DO DESIGN SYSTEM
+   Linguagem: cartaz impresso / risografia. Papel + tinta + um único
+   laranja-sinal. Toda cor, raio, tipo e tempo do site sai daqui.
+   ========================================================================== */
+
+/* ---------- Fontes (auto-hospedadas, só o subconjunto latino) ---------- */
+@font-face {
+    font-family: 'Mona Sans';
+    src: url('../assets/fontes/mona-sans-var.woff2') format('woff2-variations'),
+         url('../assets/fontes/mona-sans-var.woff2') format('woff2');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Martian Mono';
+    src: url('../assets/fontes/martian-mono-var.woff2') format('woff2-variations'),
+         url('../assets/fontes/martian-mono-var.woff2') format('woff2');
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    /* ---------- Cor: tema claro (papel) ---------- */
+    --c-papel: #f0f0ec;          /* fundo */
+    --c-papel-2: #e6e6e1;        /* superfícies afundadas (estojo do teclado, molduras) */
+    --c-papel-3: #d6d6d0;        /* lateral das teclas, trilhos */
+    --c-tecla: #f8f8f5;          /* face das teclas: um tom acima do papel */
+    --c-tinta: #131417;          /* texto principal */
+    --c-tinta-2: #45474d;        /* texto secundário */
+    --c-tinta-3: #5f6168;        /* rótulos e metadados (AA sobre o papel) */
+    --c-linha: rgb(19 20 23 / 0.14);
+    --c-linha-forte: rgb(19 20 23 / 0.32);
+    --c-sinal: #ff5a1f;          /* a única cor de destaque do site */
+    --c-sinal-texto: #b83a08;    /* laranja escurecido p/ texto pequeno (AA) */
+    --c-sobre-sinal: #131417;    /* texto em cima do laranja */
+    --c-veu: rgb(19 20 23 / 0.55);
+    --sombra-cor: 220 10% 20%;
+    --mistura-reticula: multiply;
+    --filtro-foto: contrast(1.04) brightness(1.02);
+
+    /* ---------- Tipografia ---------- */
+    --f-texto: 'Mona Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --f-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+    --fs-mono: 0.75rem;                                        /* 12px rótulos (piso de legibilidade) */
+    --fs-pequeno: 0.875rem;                                   /* 14px */
+    --fs-base: 1.0625rem;                                     /* 17px corpo */
+    --fs-grande: clamp(1.125rem, 1.02rem + 0.45vw, 1.3125rem);
+    --fs-declaracao: clamp(1.5rem, 1.05rem + 1.9vw, 2.6rem);
+    --fs-h3: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+    --fs-h2: clamp(3rem, 1.4rem + 6.4vw, 7rem);
+    --fs-display: clamp(4.25rem, 0.6rem + 11.6vw, 12rem);
+
+    --lh-justo: 0.88;
+    --lh-titulo: 1.02;
+    --lh-texto: 1.6;
+
+    /* font-stretch = eixo de largura da Mona Sans */
+    --largura-condensada: 75%;
+    --largura-semi: 87.5%;
+
+    /* ---------- Espaço (base 4px) ---------- */
+    --e-1: 0.25rem;
+    --e-2: 0.5rem;
+    --e-3: 0.75rem;
+    --e-4: 1rem;
+    --e-5: 1.5rem;
+    --e-6: 2rem;
+    --e-7: 3rem;
+    --e-8: 4rem;
+    --e-9: 6rem;
+    --e-10: 8rem;
+    --secao-respiro: clamp(4.5rem, 2.6rem + 5.6vw, 8rem);
+    --calha: clamp(1rem, 0.4rem + 2.6vw, 2.5rem);
+    --largura-max: 1320px;
+    --altura-cabecalho: 68px;
+
+    /* ---------- Forma ----------
+       Regra única: interativo = pílula; moldura/painel = 12px;
+       tecla = 10px (objeto físico, documentado como exceção). */
+    --raio-sm: 6px;
+    --raio-md: 12px;
+    --raio-tecla: 10px;
+    --raio-pilula: 999px;
+
+    /* ---------- Sombra (sempre tingida, nunca preto puro) ---------- */
+    --sombra-1: 0 1px 2px hsl(var(--sombra-cor) / 0.08), 0 2px 8px hsl(var(--sombra-cor) / 0.06);
+    --sombra-2: 0 12px 32px -8px hsl(var(--sombra-cor) / 0.22), 0 4px 10px -4px hsl(var(--sombra-cor) / 0.12);
+    --sombra-3: 0 30px 80px -20px hsl(var(--sombra-cor) / 0.4);
+
+    /* ---------- Movimento ---------- */
+    --ease-saida: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-mola: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-padrao: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-1: 160ms;
+    --dur-2: 320ms;
+    --dur-3: 700ms;
+    --dur-4: 1100ms;
+
+    /* ---------- Camadas (única escala de z-index do site) ---------- */
+    --z-previa: 30;
+    --z-cabecalho: 40;
+    --z-progresso: 45;
+    --z-grao: 60;
+
+    color-scheme: light;
+}
+
+/* ---------- Tema escuro (noite) ----------
+   Vale pela preferência do sistema quando não há escolha salva,
+   ou quando o botão de tema define data-tema="escuro". */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-tema="claro"]) {
+        --c-papel: #111215;
+        --c-papel-2: #1a1b1f;
+        --c-papel-3: #08090a;
+        --c-tecla: #26272c;
+        --c-tinta: #eeeee9;
+        --c-tinta-2: #b9bab5;
+        --c-tinta-3: #95968f;
+        --c-linha: rgb(238 238 233 / 0.12);
+        --c-linha-forte: rgb(238 238 233 / 0.3);
+        --c-sinal: #ff6b35;
+        --c-sinal-texto: #ff8c5f;
+        --c-sobre-sinal: #111215;
+        --c-veu: rgb(5 5 7 / 0.72);
+        --sombra-cor: 230 20% 2%;
+        --mistura-reticula: screen;
+        --filtro-foto: brightness(1.06) contrast(1.05);
+        color-scheme: dark;
+    }
+}
+
+:root[data-tema="escuro"] {
+    --c-papel: #111215;
+    --c-papel-2: #1a1b1f;
+    --c-papel-3: #08090a;
+    --c-tecla: #26272c;
+    --c-tinta: #eeeee9;
+    --c-tinta-2: #b9bab5;
+    --c-tinta-3: #95968f;
+    --c-linha: rgb(238 238 233 / 0.12);
+    --c-linha-forte: rgb(238 238 233 / 0.3);
+    --c-sinal: #ff6b35;
+    --c-sinal-texto: #ff8c5f;
+    --c-sobre-sinal: #111215;
+    --c-veu: rgb(5 5 7 / 0.72);
+    --sombra-cor: 230 20% 2%;
+    --mistura-reticula: screen;
+    --filtro-foto: brightness(1.06) contrast(1.05);
+    color-scheme: dark;
+}

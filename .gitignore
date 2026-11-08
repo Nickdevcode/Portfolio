@@ -1,0 +1,20 @@
+# Dependências e saídas de build/deploy
+node_modules/
+.vercel/
+
+# Segredos e variáveis de ambiente
+.env
+.env.*
+
+# Documentação interna (o que é público mora no README.md)
+docs/
+
+# Ferramentas locais do editor/agentes
+.impeccable/
+.vscode/
+.idea/
+
+# Lixo de sistema
+.DS_Store
+Thumbs.db
+desktop.ini

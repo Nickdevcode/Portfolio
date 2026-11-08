@@ -2,502 +2,489 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="meta.title">Nicolas Carvalho - Portfólio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nicolas Carvalho · Desenvolvedor front-end e back-end</title>
+    <meta name="description" content="Portfólio de Nicolas Carvalho, desenvolvedor front-end e back-end de 18 anos em São Paulo. Sites, APIs e sistemas com JavaScript, Node.js, MySQL e Java.">
+    <meta name="author" content="Nicolas Carvalho">
+    <link rel="canonical" href="https://portnick.vercel.app/">
+    <meta name="theme-color" content="#F0F0EC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#111215" media="(prefers-color-scheme: dark)">
+    <meta name="color-scheme" content="light dark">
+
+    <!-- Open Graph / redes sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portnick.vercel.app/">
+    <meta property="og:title" content="Nicolas Carvalho · Desenvolvedor front-end e back-end">
+    <meta property="og:description" content="Sites, APIs e sistemas com JavaScript, Node.js, MySQL e Java. Aberto a projetos freelance.">
+    <meta property="og:image" content="https://portnick.vercel.app/assets/og-imagem.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@2.16.0/devicon.min.css">
+    <link rel="preload" href="assets/fontes/mona-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Aplica tema salvo antes da primeira pintura (evita piscar claro/escuro) -->
+    <script src="js/tema-inicial.js"></script>
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/componentes.css">
+    <link rel="stylesheet" href="css/secoes.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Nicolas Carvalho",
+        "jobTitle": "Desenvolvedor front-end e back-end",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Paulo",
+            "addressRegion": "SP",
+            "addressCountry": "BR"
+        },
+        "url": "https://portnick.vercel.app/",
+        "email": "mailto:nickcarva31@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/nicolas-carva",
+            "https://github.com/Nickdevcode",
+            "https://www.instagram.com/nickx.dev/"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "UNASP SP - Centro Universitário Adventista de São Paulo"
+        },
+        "knowsAbout": ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", "MySQL", "Java"]
+    }
+    </script>
+
+    <!-- modulepreload: baixa os módulos em paralelo em vez de descobrir um import por vez -->
+    <link rel="modulepreload" href="js/i18n.js">
+    <link rel="modulepreload" href="js/dados/traducoes.js">
+    <link rel="modulepreload" href="js/dados/projetos.js">
+    <link rel="modulepreload" href="js/utilitarios.js">
+    <link rel="modulepreload" href="js/hero.js">
+    <link rel="modulepreload" href="js/tema.js">
+    <link rel="modulepreload" href="js/revelar.js">
+    <link rel="modulepreload" href="js/navegacao.js">
+    <link rel="modulepreload" href="js/projetos.js">
+    <link rel="modulepreload" href="js/retrato.js">
+    <script type="module" src="js/main.js"></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo" id="logo-home">
-                <div class="logo-icon">
-                    <span class="logo-n">N</span>
-                    <span class="logo-brackets">&lt;/&gt;</span>
-                </div>
+    <a class="pular" href="#conteudo" data-i18n="pular">Pular para o conteúdo</a>
+    <div class="progresso-leitura" aria-hidden="true"></div>
+    <span class="sentinela-topo" aria-hidden="true"></span>
+
+    <!-- ===================== Cabeçalho ===================== -->
+    <header class="cabecalho" id="cabecalho">
+        <div class="container cabecalho-interno">
+            <a href="#home" class="marca" data-i18n-attr="aria-label:marca.rotulo" aria-label="Nicolas Carvalho, voltar ao início">
+                <svg class="monograma" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g class="monograma-n"><rect x="0" y="0" width="21" height="100"/><polygon points="0,0 24,0 61,100 37,100"/></g><g class="monograma-c"><rect x="40" y="0" width="21" height="100"/><polygon points="40,0 94.22,0 100,17 40,17"/><polygon points="40,83 94.22,83 100,100 40,100"/></g></svg>
+                <span class="marca-nome" aria-hidden="true">Nicolas Carvalho</span>
             </a>
-            <nav class="nav">
-                <a href="#home" class="nav-link active" data-section="home" data-i18n="nav.home">Home</a>
-                <a href="#sobre" class="nav-link" data-section="sobre" data-i18n="nav.sobre">Sobre mim</a>
-                <a href="#portfolio" class="nav-link" data-section="portfolio" data-i18n="nav.portfolio">Portfólio</a>
-                <a href="#skills" class="nav-link" data-section="skills" data-i18n="nav.skills">Skills</a>
-                <a href="#carreira" class="nav-link" data-section="carreira" data-i18n="nav.carreira">Carreira</a>
-                <a href="#contato" class="nav-link" data-section="contato" data-i18n="nav.contato">Contato</a>
+
+            <nav class="nav" data-i18n-attr="aria-label:nav.rotulo" aria-label="Navegação principal">
+                <ul class="nav-lista">
+                    <li><a class="nav-link" href="#home" data-secao="home" data-i18n="nav.home">Início</a></li>
+                    <li><a class="nav-link" href="#sobre" data-secao="sobre" data-i18n="nav.sobre">Sobre</a></li>
+                    <li><a class="nav-link" href="#portfolio" data-secao="portfolio" data-i18n="nav.portfolio">Projetos</a></li>
+                    <li><a class="nav-link" href="#skills" data-secao="skills" data-i18n="nav.skills">Skills</a></li>
+                    <li><a class="nav-link" href="#carreira" data-secao="carreira" data-i18n="nav.carreira">Carreira</a></li>
+                    <li><a class="nav-link" href="#contato" data-secao="contato" data-i18n="nav.contato">Contato</a></li>
+                </ul>
+                <span class="nav-indicador" aria-hidden="true"></span>
             </nav>
-            <div class="header-actions">
-                <button class="lang-toggle" id="lang-toggle" data-i18n-attr="aria-label:lang.toggleLabel" aria-label="Mudar idioma para inglês">
-                    <span class="lang-option" data-lang="pt">PT</span>
-                    <span class="lang-divider">|</span>
-                    <span class="lang-option" data-lang="en">EN</span>
+
+            <div class="cabecalho-acoes">
+                <button class="idioma" type="button" data-alternar-idioma data-i18n-attr="aria-label:lang.toggleLabel" aria-label="Mudar idioma para inglês">
+                    <span class="idioma-opcao" data-lang="pt">PT</span>
+                    <span class="idioma-opcao" data-lang="en">EN</span>
                 </button>
-                <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
-                    <span class="menu-line"></span>
+                <button class="botao-icone" type="button" data-alternar-tema aria-label="Mudar para tema escuro">
+                    <svg class="icone icone-tema icone-tema--lua" aria-hidden="true"><use href="assets/icones.svg#lua"></use></svg>
+                    <svg class="icone icone-tema icone-tema--sol" aria-hidden="true"><use href="assets/icones.svg#sol"></use></svg>
+                </button>
+                <button class="botao-icone botao-menu" type="button" id="abrir-menu" aria-haspopup="dialog" aria-controls="menu-movel" data-i18n-attr="aria-label:nav.menu" aria-label="Abrir menu">
+                    <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#menu"></use></svg>
                 </button>
             </div>
         </div>
     </header>
 
-    <div class="menu-overlay" id="menu-overlay"></div>
-    <nav class="sidebar-menu" id="sidebar-menu">
-        <div class="sidebar-header">
-            <a href="#" class="sidebar-logo" id="sidebar-logo-home">
-                <div class="logo-icon">
-                    <span class="logo-n">N</span>
-                    <span class="logo-brackets">&lt;/&gt;</span>
-                </div>
-            </a>
-            <button class="sidebar-close" id="sidebar-close" aria-label="Fechar menu">
-                <i class="fas fa-times"></i>
+    <!-- Menu do celular: <dialog> nativo dá foco preso, Esc e camada superior de graça -->
+    <dialog class="menu-movel" id="menu-movel" data-i18n-attr="aria-label:nav.rotulo" aria-label="Navegação principal">
+        <div class="menu-movel-topo">
+            <svg class="monograma" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><g class="monograma-n"><rect x="0" y="0" width="21" height="100"/><polygon points="0,0 24,0 61,100 37,100"/></g><g class="monograma-c"><rect x="40" y="0" width="21" height="100"/><polygon points="40,0 94.22,0 100,17 40,17"/><polygon points="40,83 94.22,83 100,100 40,100"/></g></svg>
+            <button class="botao-icone" type="button" data-fechar-menu data-i18n-attr="aria-label:nav.fecharMenu" aria-label="Fechar menu">
+                <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#fechar"></use></svg>
             </button>
         </div>
-        <div class="sidebar-nav">
-            <a href="#home" class="sidebar-link active" data-section="home" data-i18n="nav.home">Home</a>
-            <a href="#sobre" class="sidebar-link" data-section="sobre" data-i18n="nav.sobre">Sobre mim</a>
-            <a href="#portfolio" class="sidebar-link" data-section="portfolio" data-i18n="nav.portfolio">Portfólio</a>
-            <a href="#skills" class="sidebar-link" data-section="skills" data-i18n="nav.skills">Skills</a>
-            <a href="#carreira" class="sidebar-link" data-section="carreira" data-i18n="nav.carreira">Carreira</a>
-            <a href="#contato" class="sidebar-link" data-section="contato" data-i18n="nav.contato">Contato</a>
-        </div>
-        <div class="sidebar-lang">
-            <button class="lang-toggle lang-toggle-sidebar" id="lang-toggle-sidebar" data-i18n-attr="aria-label:lang.toggleLabel" aria-label="Mudar idioma para inglês">
-                <span class="lang-option" data-lang="pt">PT</span>
-                <span class="lang-divider">|</span>
-                <span class="lang-option" data-lang="en">EN</span>
+        <nav class="menu-movel-nav">
+            <ul class="menu-movel-lista">
+                <li><a href="#home" data-i18n="nav.home">Início</a></li>
+                <li><a href="#sobre" data-i18n="nav.sobre">Sobre</a></li>
+                <li><a href="#portfolio" data-i18n="nav.portfolio">Projetos</a></li>
+                <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+                <li><a href="#carreira" data-i18n="nav.carreira">Carreira</a></li>
+                <li><a href="#contato" data-i18n="nav.contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="menu-movel-rodape">
+            <button class="idioma" type="button" data-alternar-idioma data-i18n-attr="aria-label:lang.toggleLabel" aria-label="Mudar idioma para inglês">
+                <span class="idioma-opcao" data-lang="pt">PT</span>
+                <span class="idioma-opcao" data-lang="en">EN</span>
             </button>
+            <ul class="redes-mini">
+                <li><a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#linkedin"></use></svg></a></li>
+                <li><a href="https://github.com/Nickdevcode" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#github"></use></svg></a></li>
+                <li><a href="https://www.instagram.com/nickx.dev/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#instagram"></use></svg></a></li>
+            </ul>
         </div>
-    </nav>
+    </dialog>
 
-    <main class="main" id="home">
-        <div class="container">
-            <div class="content-wrapper">
-                <div class="left-content">
-                    <div class="greeting-badge">
-                        <i class="fas fa-hand wave-emoji" aria-label="Mão acenando"></i>
-                        <span class="greeting-text" data-i18n="hero.saudacoes">Saudações!</span>
-                    </div>
-                    <h1 class="name">Nicolas<br>Carvalho</h1>
-                    <p class="profession" data-i18n="hero.profissao">Desenvolvedor Front-end &amp; Back-end · Rumo a Full-Stack</p>
-                    <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Nickdevcode" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.instagram.com/nickx.dev/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+    <main id="conteudo">
+        <!-- ===================== Hero ===================== -->
+        <section class="hero" id="home" aria-labelledby="hero-titulo">
+            <div class="container hero-grade">
+                <div class="hero-retrato">
+                    <!-- Segunda tinta: retícula laranja fora de registro, desenhada em js/retrato.js -->
+                    <canvas class="retrato-reticula" id="retrato" data-src="img/retrato-reticula.png" aria-hidden="true"></canvas>
+                    <img class="retrato-foto" src="img/retrato-recorte.webp" data-i18n-attr="alt:retrato.alt" alt="Retrato de Nicolas Carvalho" width="1200" height="970" fetchpriority="high" decoding="async">
+                    <p class="retrato-dica" aria-hidden="true">
+                        <span data-i18n="retrato.dica">passe o cursor</span>
+                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-diagonal"></use></svg>
+                    </p>
                 </div>
 
-                <div class="center-content">
-                    <div class="avatar-container">
-                        <div class="avatar-circle"></div>
-                        <div class="avatar-image">
-                            <img src="img/perfil.png" alt="Nicolas Carvalho">
-                        </div>
-                        <div class="tech-icon react-icon">
-                            <i class="devicon-react-original"></i>
-                        </div>
-                        <div class="tech-icon typescript-icon">
-                            <i class="devicon-typescript-plain"></i>
-                        </div>
-                        <div class="tech-icon nodejs-icon">
-                            <i class="devicon-nodejs-plain"></i>
+                <div class="hero-texto">
+                    <p class="status">
+                        <span class="status-item">
+                            <span class="status-ponto" aria-hidden="true"></span>
+                            <span data-i18n="hero.status">Aberto a projetos freelance</span>
+                        </span>
+                        <span class="status-item status-local">
+                            <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#local"></use></svg>
+                            <span data-i18n="hero.local">São Paulo, SP</span>
+                        </span>
+                    </p>
+                    <h1 class="hero-nome" id="hero-titulo">
+                        <span class="sr-only">Nicolas Carvalho</span>
+                        <span class="hero-nome-visual" aria-hidden="true">
+                            <span class="nome-camada nome-camada--sinal"><span class="linha"><span class="linha-texto">Nicolas</span></span><span class="linha"><span class="linha-texto">Carvalho</span></span></span>
+                            <span class="nome-camada nome-camada--tinta"><span class="linha"><span class="linha-texto">Nicolas</span></span><span class="linha"><span class="linha-texto">Carvalho</span></span></span>
+                        </span>
+                    </h1>
+                    <p class="hero-sub" data-i18n="hero.subtitulo">Desenvolvedor front-end e back-end. Crio interfaces com React e Next.js e APIs com Node.js e MySQL.</p>
+                    <div class="hero-acoes">
+                        <a class="botao botao--primario" href="#portfolio">
+                            <span data-i18n="hero.verProjetos">Ver projetos</span>
+                            <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-baixo"></use></svg>
+                        </a>
+                        <div class="menu-cv" data-menu-cv>
+                            <button class="botao botao--contorno" type="button" aria-expanded="false" aria-controls="lista-cv" data-menu-cv-botao>
+                                <span data-i18n="hero.baixarCv">Baixar CV</span>
+                                <svg class="icone icone-caret" aria-hidden="true"><use href="assets/icones.svg#caret"></use></svg>
+                            </button>
+                            <ul class="menu-cv-lista" id="lista-cv" hidden>
+                                <li>
+                                    <a href="assets/curriculo_nicolascarvalho.pdf" download>
+                                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#pdf"></use></svg>
+                                        <span data-i18n="cv.pt">Português</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="assets/curriculo_nicolascarvalho_ingl%C3%AAs.pdf" download>
+                                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#pdf"></use></svg>
+                                        <span data-i18n="cv.en">English</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-
-                <div class="right-content">
-                    <a href="#" class="download-cv" id="btn-download-cv">
-                        <i class="fas fa-download"></i>
-                        <span data-i18n="hero.baixarCv">Baixar CV</span>
-                    </a>
-                    <button class="contact-button" id="btn-conversar">
-                        <i class="fas fa-comment"></i>
-                        <span data-i18n="hero.conversar">Vamos conversar</span>
-                    </button>
                 </div>
             </div>
-        </div>
-    </main>
+        </section>
 
-    <div class="section-divider"></div>
+        <!-- ===================== Sobre ===================== -->
+        <section class="secao sobre" id="sobre" aria-labelledby="sobre-titulo">
+            <div class="container sobre-grade">
+                <h2 class="titulo-secao" id="sobre-titulo" data-revelar><span class="titulo-mascara" data-i18n="sobre.titulo">Sobre mim</span></h2>
+                <div class="sobre-texto">
+                    <p class="sobre-declaracao" data-revelar data-i18n-html="sobre.texto">Tenho 18 anos, moro em São Paulo, sou PCD e estou no último ano do <mark>técnico em TI integrado ao ensino médio</mark> na UNASP SP. Crio <mark>sites e aplicações web completas e responsivas</mark> com React, Next.js, TypeScript e Tailwind CSS, e cuido do <mark>back-end com Node.js e MySQL</mark>.</p>
+                    <p class="sobre-complemento" data-revelar data-i18n="sobre.complemento">Tenho noções de UX/UI e sigo estudando rumo ao desenvolvimento full-stack. Gosto de desafio, e o sonho é ser full-stack em uma grande empresa ou projeto.</p>
+                </div>
+                <dl class="fatos" data-revelar-filhos>
+                    <div class="fato" data-revelar>
+                        <dt data-i18n="sobre.fato.base.rotulo">Base</dt>
+                        <dd data-i18n="sobre.fato.base.valor">São Paulo, SP</dd>
+                    </div>
+                    <div class="fato" data-revelar>
+                        <dt data-i18n="sobre.fato.idade.rotulo">Idade</dt>
+                        <dd data-i18n="sobre.fato.idade.valor">18 anos</dd>
+                    </div>
+                    <div class="fato" data-revelar>
+                        <dt data-i18n="sobre.fato.formacao.rotulo">Formação</dt>
+                        <dd data-i18n="sobre.fato.formacao.valor">Técnico em TI + Ensino Médio, UNASP SP</dd>
+                    </div>
+                    <div class="fato" data-revelar>
+                        <dt data-i18n="sobre.fato.conclusao.rotulo">Conclusão</dt>
+                        <dd data-i18n="sobre.fato.conclusao.valor">Dezembro de 2026</dd>
+                    </div>
+                    <div class="fato" data-revelar>
+                        <dt data-i18n="sobre.fato.foco.rotulo">Foco</dt>
+                        <dd data-i18n="sobre.fato.foco.valor">Front-end e back-end, rumo ao full-stack</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
 
-    <section class="about-section" id="sobre">
-        <div class="container">
-            <div class="about-wrapper">
-                <div class="about-image">
-                    <div class="about-photo-frame">
-                        <img src="img/perfil_variante.png" alt="Nicolas Carvalho">
+        <!-- ===================== Projetos ===================== -->
+        <section class="secao projetos" id="portfolio" aria-labelledby="projetos-titulo">
+            <div class="container">
+                <div class="projetos-topo">
+                    <h2 class="titulo-secao" id="projetos-titulo" data-revelar>
+                        <span class="titulo-mascara" data-i18n="portfolio.titulo">Projetos</span>
+                    </h2>
+                    <div class="filtros" role="group" data-i18n-attr="aria-label:portfolio.filtro.rotulo" aria-label="Filtrar projetos por área" data-revelar>
+                        <button class="filtro" type="button" data-filtro="todos" aria-pressed="true" data-i18n="portfolio.filtro.todos">Todos</button>
+                        <button class="filtro" type="button" data-filtro="front-end" aria-pressed="false" data-i18n="portfolio.filtro.frontend">Front-end</button>
+                        <button class="filtro" type="button" data-filtro="back-end" aria-pressed="false" data-i18n="portfolio.filtro.backend">Back-end</button>
+                        <button class="filtro" type="button" data-filtro="full-stack" aria-pressed="false" data-i18n="portfolio.filtro.fullstack">Full-stack</button>
                     </div>
                 </div>
-                <div class="about-content">
-                    <div class="about-badge">
-                        <i class="fas fa-star sparkle-emoji" aria-label="Brilho"></i>
-                        <span class="about-badge-text" data-i18n="sobre.badge">Sobre mim</span>
+
+                <p class="sr-only" aria-live="polite" id="anuncio-filtro"></p>
+                <div class="destaques" id="destaques"></div>
+                <ul class="indice" id="indice-projetos"></ul>
+
+                <a class="link-seta link-github" href="https://github.com/Nickdevcode" target="_blank" rel="noopener noreferrer" data-revelar>
+                    <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#github"></use></svg>
+                    <span data-i18n="portfolio.github">Mais no GitHub</span>
+                    <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-diagonal"></use></svg>
+                </a>
+            </div>
+            <!-- A <img> é criada em js/projetos.js na primeira passada do cursor -->
+            <div class="previa-flutuante" aria-hidden="true"></div>
+        </section>
+
+        <!-- ===================== Skills ===================== -->
+        <section class="secao skills" id="skills" aria-labelledby="skills-titulo">
+            <div class="container skills-grade">
+                <div class="skills-cabeca">
+                    <h2 class="titulo-secao" id="skills-titulo" data-revelar><span class="titulo-mascara" data-i18n="skills.titulo">Skills</span></h2>
+                    <p class="secao-intro" data-revelar data-i18n="skills.intro">As tecnologias do meu dia a dia. Pode apertar as teclas.</p>
+                </div>
+
+                <div class="teclado" data-revelar>
+                    <div class="teclado-linha">
+                        <h3 class="tecla tecla--mod tecla--u150"><svg class="tecla-mod-icone" aria-hidden="true"><use href="assets/icones.svg#navegador"></use></svg><span data-i18n="skills.grupo.front">Front-end</span></h3>
+                        <ul class="teclado-teclas">
+                            <li class="tecla" data-tec="html"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-html"></use></svg><span>HTML</span></li>
+                            <li class="tecla" data-tec="css"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-css"></use></svg><span>CSS</span></li>
+                            <li class="tecla" data-tec="javascript"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-javascript"></use></svg><span>JavaScript</span></li>
+                            <li class="tecla" data-tec="typescript"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-typescript"></use></svg><span>TypeScript</span></li>
+                            <li class="tecla" data-tec="react"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-react"></use></svg><span>React</span></li>
+                            <li class="tecla" data-tec="nextjs"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-nextjs"></use></svg><span>Next.js</span></li>
+                            <li class="tecla" data-tec="tailwind"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-tailwind"></use></svg><span>Tailwind</span></li>
+                        </ul>
                     </div>
-                    <h2 class="about-name">Nicolas Carvalho</h2>
-                    <ul class="about-list">
-                        <li class="about-item">
-                            <i class="fas fa-hand about-emoji" aria-label="Mão acenando"></i>
-                            <span class="about-text" data-i18n="sobre.item1">Me chamo Nicolas Carvalho. Prazer em conhecê-lo!</span>
-                        </li>
-                        <li class="about-item">
-                            <i class="fas fa-laptop-code about-emoji" aria-label="Pessoa programando"></i>
-                            <span class="about-text" data-i18n="sobre.item2">Desenvolvedor estudante de 18 anos PCD, dedicado e colaborativo. Crio sites e aplicações web completas e responsivas com React, Next.js, TypeScript e Tailwind CSS, além de back-end em Node.js e MySQL.</span>
-                        </li>
-                        <li class="about-item">
-                            <i class="fas fa-graduation-cap about-emoji" aria-label="Capelo"></i>
-                            <span class="about-text" data-i18n="sobre.item3">Cursando 3º ano do Ensino Médio com TI na UNASP SP.</span>
-                        </li>
-                        <li class="about-item">
-                            <i class="fas fa-lightbulb about-emoji" aria-label="Lâmpada"></i>
-                            <span class="about-text" data-i18n="sobre.item4">Atuo em front-end e back-end, com noções de UX/UI, e evoluo em curso rumo ao desenvolvimento Full-Stack.</span>
-                        </li>
-                        <li class="about-item">
-                            <i class="fas fa-rocket about-emoji" aria-label="Foguete"></i>
-                            <span class="about-text" data-i18n="sobre.item5">Paixão por desafios. Sonho: ser Full-Stack em grande empresa ou projeto.</span>
-                        </li>
+                    <div class="teclado-linha">
+                        <h3 class="tecla tecla--mod tecla--u175"><svg class="tecla-mod-icone" aria-hidden="true"><use href="assets/icones.svg#banco"></use></svg><span data-i18n="skills.grupo.back">Back-end</span></h3>
+                        <ul class="teclado-teclas">
+                            <li class="tecla" data-tec="nodejs"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-nodejs"></use></svg><span>Node.js</span></li>
+                            <li class="tecla" data-tec="express"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-express"></use></svg><span>Express</span></li>
+                            <li class="tecla" data-tec="mysql"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-mysql"></use></svg><span>MySQL</span></li>
+                            <li class="tecla" data-tec="java"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-java"></use></svg><span>Java</span></li>
+                            <li class="tecla" data-tec="python"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-python"></use></svg><span>Python</span></li>
+                            <li class="tecla" data-tec="cpp"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-cpp"></use></svg><span>C++</span></li>
+                        </ul>
+                    </div>
+                    <div class="teclado-linha">
+                        <h3 class="tecla tecla--mod tecla--u225"><svg class="tecla-mod-icone" aria-hidden="true"><use href="assets/icones.svg#ferramenta"></use></svg><span data-i18n="skills.grupo.ferramentas">Ferramentas</span></h3>
+                        <ul class="teclado-teclas">
+                            <li class="tecla" data-tec="git"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-git"></use></svg><span>Git</span></li>
+                            <li class="tecla" data-tec="github"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-github"></use></svg><span>GitHub</span></li>
+                            <li class="tecla" data-tec="vscode"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-vscode"></use></svg><span>VS Code</span></li>
+                            <li class="tecla" data-tec="intellij"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#t-intellij"></use></svg><span>IntelliJ</span></li>
+                        </ul>
+                    </div>
+                    <div class="teclado-linha">
+                        <h3 class="tecla tecla--mod tecla--u125"><svg class="tecla-mod-icone" aria-hidden="true"><use href="assets/icones.svg#brilho"></use></svg><span data-i18n="skills.grupo.extras">Extras</span></h3>
+                        <ul class="teclado-teclas">
+                            <li class="tecla" data-tec="uxui"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#paleta"></use></svg><span>UX/UI</span></li>
+                            <li class="tecla" data-tec="hardware"><svg class="tecla-logo" aria-hidden="true"><use href="assets/icones.svg#chip"></use></svg><span>Hardware</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faixa" data-revelar>
+                <h3 class="sr-only" data-i18n="skills.subtitulo.gerais">Habilidades gerais</h3>
+                <div class="faixa-trilho">
+                    <ul class="faixa-lista">
+                        <li data-i18n="skills.soft.comunicacao">Facilidade de comunicação</li>
+                        <li data-i18n="skills.soft.equipe">Trabalho em equipe</li>
+                        <li data-i18n="skills.soft.gestaoProjetos">Gestão de projetos</li>
+                        <li data-i18n="skills.soft.lideranca">Liderança de equipe</li>
+                        <li data-i18n="skills.soft.resolucao">Resolução de problemas</li>
+                        <li data-i18n="skills.soft.organizacao">Organização</li>
+                        <li data-i18n="skills.soft.adaptabilidade">Adaptabilidade</li>
+                        <li data-i18n="skills.soft.aprendizadoContinuo">Aprendizado contínuo</li>
+                        <li data-i18n="skills.soft.facilidadeAprendizado">Facilidade de aprendizado</li>
+                        <li data-i18n="skills.soft.pensamentoCritico">Pensamento crítico</li>
+                        <li data-i18n="skills.soft.inteligenciaEmocional">Inteligência emocional</li>
+                        <li data-i18n="skills.soft.criatividade">Criatividade</li>
+                        <li data-i18n="skills.soft.gestaoTempo">Gestão do tempo</li>
+                    </ul>
+                    <!-- Cópia só visual: fecha o loop da faixa sem emenda -->
+                    <ul class="faixa-lista" aria-hidden="true">
+                        <li data-i18n="skills.soft.comunicacao">Facilidade de comunicação</li>
+                        <li data-i18n="skills.soft.equipe">Trabalho em equipe</li>
+                        <li data-i18n="skills.soft.gestaoProjetos">Gestão de projetos</li>
+                        <li data-i18n="skills.soft.lideranca">Liderança de equipe</li>
+                        <li data-i18n="skills.soft.resolucao">Resolução de problemas</li>
+                        <li data-i18n="skills.soft.organizacao">Organização</li>
+                        <li data-i18n="skills.soft.adaptabilidade">Adaptabilidade</li>
+                        <li data-i18n="skills.soft.aprendizadoContinuo">Aprendizado contínuo</li>
+                        <li data-i18n="skills.soft.facilidadeAprendizado">Facilidade de aprendizado</li>
+                        <li data-i18n="skills.soft.pensamentoCritico">Pensamento crítico</li>
+                        <li data-i18n="skills.soft.inteligenciaEmocional">Inteligência emocional</li>
+                        <li data-i18n="skills.soft.criatividade">Criatividade</li>
+                        <li data-i18n="skills.soft.gestaoTempo">Gestão do tempo</li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="section-divider"></div>
+        <!-- ===================== Carreira ===================== -->
+        <section class="secao carreira" id="carreira" aria-labelledby="carreira-titulo">
+            <div class="container">
+                <h2 class="titulo-secao" id="carreira-titulo" data-revelar><span class="titulo-mascara" data-i18n="carreira.titulo">Carreira</span></h2>
 
-    <section class="portfolio-section" id="portfolio">
-        <div class="container">
-            <div class="portfolio-header">
-                <div class="portfolio-badge">
-                    <i class="fas fa-briefcase portfolio-emoji" aria-label="Portfólio"></i>
-                    <span data-i18n="portfolio.badge">Portfólio</span>
-                </div>
-                <h2 class="portfolio-title" data-i18n="portfolio.titulo">Trabalhos e projetos</h2>
-                <div class="portfolio-filters">
-                    <button class="filter-btn active" data-filter="todos">
-                        <i class="fas fa-th"></i>
-                        <span data-i18n="portfolio.filtro.todos">Todos</span>
-                    </button>
-                    <button class="filter-btn" data-filter="front-end">
-                        <i class="fas fa-code"></i>
-                        <span data-i18n="portfolio.filtro.frontend">Front-end</span>
-                    </button>
-                    <button class="filter-btn" data-filter="back-end">
-                        <i class="fas fa-server"></i>
-                        <span data-i18n="portfolio.filtro.backend">Back-end</span>
-                    </button>
-                    <button class="filter-btn" data-filter="full-stack">
-                        <i class="fas fa-layer-group"></i>
-                        <span data-i18n="portfolio.filtro.fullstack">Full-stack</span>
-                    </button>
-                </div>
-            </div>
-            <div class="portfolio-grid" id="portfolio-grid">
-                <!-- Projetos serão inseridos via JavaScript -->
-            </div>
-            <div class="portfolio-footer">
-                <a href="#" class="ver-mais-projetos" id="ver-mais-projetos" data-i18n="portfolio.verMais">
-                    Ver mais projetos →
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <div class="skills-badge">
-                <i class="fas fa-bullseye skills-emoji" aria-label="Habilidades"></i>
-                <span data-i18n="skills.badge">Skills · Habilidades</span>
-            </div>
-            <h2 class="skills-title" data-i18n="skills.titulo">Tecnologias e habilidades</h2>
-            
-            <div class="skills-content">
-                <div class="skills-group">
-                    <h3 class="skills-subtitle" data-i18n="skills.subtitulo.dia">Techs que uso no dia a dia</h3>
-                    <div class="tech-icons-container">
-                        <div class="tech-icon-item" data-tech="HTML" title="HTML5">
-                            <i class="fab fa-html5"></i>
-                            <span class="tech-name">HTML</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="CSS" title="CSS3">
-                            <i class="fab fa-css3-alt"></i>
-                            <span class="tech-name">CSS</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="JavaScript" title="JavaScript">
-                            <i class="fab fa-js"></i>
-                            <span class="tech-name">JavaScript</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="TypeScript" title="TypeScript">
-                            <i class="devicon-typescript-plain"></i>
-                            <span class="tech-name">TypeScript</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="React" title="React">
-                            <i class="devicon-react-original"></i>
-                            <span class="tech-name">React</span>
-                        </div>
-                        <div class="tech-icon-item tech-icon-wordmark" data-tech="Next.js" title="Next.js">
-                            <i class="devicon-nextjs-original-wordmark"></i>
-                            <span class="tech-name">Next.js</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Tailwind CSS" title="Tailwind CSS">
-                            <i class="devicon-tailwindcss-plain"></i>
-                            <span class="tech-name">Tailwind</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Node.js" title="Node.js">
-                            <i class="fab fa-node-js"></i>
-                            <span class="tech-name">Node.js</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="MySQL" title="MySQL">
-                            <i class="fas fa-database"></i>
-                            <span class="tech-name">MySQL</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Java" title="Java">
-                            <i class="fab fa-java"></i>
-                            <span class="tech-name">Java</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Python" title="Python">
-                            <i class="fab fa-python"></i>
-                            <span class="tech-name">Python</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="C++" title="C++">
-                            <span class="cpp-text">C++</span>
-                            <span class="tech-name">C++</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="UX/UI" title="UX/UI">
-                            <i class="fas fa-palette"></i>
-                            <span class="tech-name">UX/UI</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="GitHub" title="GitHub">
-                            <i class="fab fa-github"></i>
-                            <span class="tech-name">GitHub</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Git" title="Git">
-                            <i class="fab fa-git-alt"></i>
-                            <span class="tech-name">Git</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="Hardware" title="Hardware">
-                            <i class="fas fa-microchip"></i>
-                            <span class="tech-name">Hardware</span>
+                <!-- Linha do tempo: posições calculadas em js/carreira.js a partir das datas reais -->
+                <div class="linha-tempo" id="linha-tempo" data-inicio="2024-01-01" data-fim="2028-01-01" data-revelar aria-hidden="true">
+                    <div class="lt-eixo">
+                        <span class="lt-ano" data-ano="2024">2024</span>
+                        <span class="lt-ano" data-ano="2025">2025</span>
+                        <span class="lt-ano" data-ano="2026">2026</span>
+                        <span class="lt-ano" data-ano="2027">2027</span>
+                    </div>
+                    <div class="lt-trilha">
+                        <span class="lt-rotulo" data-i18n="carreira.trilha.formacao">Formação</span>
+                        <div class="lt-area">
+                            <div class="lt-barra" data-de="2024-01-01" data-ate="2026-12-31"><div class="lt-progresso"></div></div>
                         </div>
                     </div>
-                </div>
-
-                <div class="skills-group">
-                    <h3 class="skills-subtitle" data-i18n="skills.subtitulo.ferramentas">Ferramentas</h3>
-                    <div class="tech-icons-container">
-                        <div class="tech-icon-item" data-tech="VS Code" title="Visual Studio Code">
-                            <i class="devicon-vscode-plain"></i>
-                            <span class="tech-name">VS Code</span>
-                        </div>
-                        <div class="tech-icon-item" data-tech="IntelliJ IDEA" title="IntelliJ IDEA">
-                            <i class="devicon-intellij-plain"></i>
-                            <span class="tech-name">IntelliJ</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skills-group">
-                    <h3 class="skills-subtitle" data-i18n="skills.subtitulo.gerais">Habilidades gerais</h3>
-                    <div class="soft-skills-container">
-                        <div class="soft-skill-item" data-i18n="skills.soft.comunicacao">Facilidade de comunicação</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.equipe">Trabalho em equipe</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.gestaoProjetos">Gestão de projetos</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.lideranca">Liderança de equipe</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.resolucao">Resolução de problemas</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.organizacao">Organização</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.adaptabilidade">Adaptabilidade</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.aprendizadoContinuo">Aprendizado contínuo</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.facilidadeAprendizado">Facilidade de aprendizado</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.pensamentoCritico">Pensamento crítico</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.inteligenciaEmocional">Inteligência emocional</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.criatividade">Criatividade</div>
-                        <div class="soft-skill-item" data-i18n="skills.soft.gestaoTempo">Gestão do tempo</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <section class="carreira-section" id="carreira">
-        <div class="container">
-            <div class="carreira-badge">
-                <i class="fas fa-briefcase carreira-emoji" aria-label="Carreira"></i>
-                <span data-i18n="carreira.badge">Carreira</span>
-            </div>
-            <h2 class="carreira-title" data-i18n="carreira.titulo">Trajetória até aqui</h2>
-            
-            <div class="carreira-content">
-                <div class="carreira-column">
-                    <div class="carreira-column-header">
-                        <h3 class="carreira-column-title" data-i18n="carreira.profissional.titulo">Área profissional</h3>
-                        <span class="carreira-column-period" data-i18n="carreira.profissional.periodo">2024 · Atualmente</span>
-                    </div>
-                    <div class="carreira-cards">
-                        <div class="carreira-card">
-                            <h4 class="carreira-card-title" data-i18n="carreira.profissional.card.titulo">Em breve</h4>
-                            <p class="carreira-card-description" data-i18n="carreira.profissional.card.descricao">Procurando oportunidades freelancers enquanto estou no ensino médio. Busco projetos em desenvolvimento web (front-end), backends e sistemas que me permitam aplicar e expandir meus conhecimentos. Tenho conhecimento intermediário tanto em front-end quanto em back-end, e estou disposto a me desafiar em diferentes tipos de projetos e tecnologias.</p>
-                            <div class="carreira-card-meta">
-                                <span class="carreira-card-duration" data-i18n="carreira.profissional.card.duracao">Em busca</span>
-                                <span class="carreira-card-dates" data-i18n="carreira.profissional.card.datas">Atualmente</span>
+                    <div class="lt-trilha">
+                        <span class="lt-rotulo" data-i18n="carreira.trilha.profissional">Profissional</span>
+                        <div class="lt-area">
+                            <div class="lt-busca">
+                                <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-direita"></use></svg>
                             </div>
                         </div>
                     </div>
+                    <div class="lt-hoje"><span class="lt-hoje-rotulo" id="lt-hoje-rotulo">hoje</span></div>
                 </div>
 
-                <div class="carreira-column">
-                    <div class="carreira-column-header">
-                        <h3 class="carreira-column-title" data-i18n="carreira.academica.titulo">Acadêmica</h3>
-                        <span class="carreira-column-period" data-i18n="carreira.academica.periodo">2024 · Atualmente</span>
+                <div class="carreira-itens">
+                    <article class="marco" data-revelar>
+                        <p class="marco-meta">
+                            <span class="selo" data-i18n="carreira.formacao.status">Último ano</span>
+                            <span data-i18n="carreira.formacao.datas">jan. 2024 a dez. 2026</span>
+                        </p>
+                        <h3 class="marco-titulo" data-i18n="carreira.formacao.titulo">Técnico em TI integrado ao ensino médio</h3>
+                        <p class="marco-local" data-i18n="carreira.formacao.instituicao">UNASP SP, Centro Universitário Adventista de São Paulo</p>
+                        <p class="marco-texto" data-i18n="carreira.formacao.descricao">Formação técnica junto com o ensino médio: programação, desenvolvimento web, banco de dados, redes e outras áreas essenciais de TI.</p>
+                    </article>
+                    <article class="marco" data-revelar>
+                        <p class="marco-meta">
+                            <span class="selo selo--sinal" data-i18n="carreira.profissional.status">Em busca</span>
+                            <span data-i18n="carreira.profissional.datas">A partir de agora</span>
+                        </p>
+                        <h3 class="marco-titulo" data-i18n="carreira.profissional.titulo">Projetos freelance</h3>
+                        <p class="marco-local" data-i18n="carreira.profissional.local">Web, back-end e sistemas</p>
+                        <p class="marco-texto" data-i18n="carreira.profissional.descricao">Busco projetos que me deixem aplicar e expandir o que sei. Tenho base intermediária em front-end e back-end e topo desafios com tecnologias diferentes.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== Contato ===================== -->
+        <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+            <div class="container contato-grade">
+                <h2 class="contato-titulo" id="contato-titulo" data-revelar data-i18n="contato.titulo">Vamos conversar?</h2>
+                <div class="contato-corpo">
+                    <p class="contato-texto" data-revelar data-i18n="contato.texto">Freela, vaga ou ideia de projeto: me chama por onde for mais fácil.</p>
+                    <div class="email-linha" data-revelar>
+                        <a class="email-grande" id="email-endereco" href="mailto:nickcarva31@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">nickcarva31@gmail.com</a>
+                        <button class="botao-copiar" type="button" id="copiar-email" data-email="nickcarva31@gmail.com" data-i18n-attr="aria-label:contato.copiarRotulo" aria-label="Copiar e-mail">
+                            <svg class="icone icone-copiar" aria-hidden="true"><use href="assets/icones.svg#copiar"></use></svg>
+                            <svg class="icone icone-check" aria-hidden="true"><use href="assets/icones.svg#check"></use></svg>
+                            <span class="botao-copiar-texto" data-i18n="contato.copiar">Copiar</span>
+                        </button>
                     </div>
-                    <div class="carreira-cards">
-                        <div class="carreira-card">
-                            <h4 class="carreira-card-title" data-i18n="carreira.academica.card1.titulo">Curso de Tecnologia da Informação integrado ao ensino médio</h4>
-                            <p class="carreira-card-description" data-i18n="carreira.academica.card1.descricao">Cursando o curso técnico de Tecnologia da Informação integrado ao ensino médio no Centro Universitário Adventista de São Paulo (UNASP). Finalizei o segundo ano, tanto do ensino médio quanto do curso técnico. O curso abrange programação, desenvolvimento web, banco de dados, redes e outras áreas essenciais da TI.</p>
-                            <div class="carreira-card-meta">
-                                <span class="carreira-card-duration" data-i18n="carreira.academica.card1.duracao">Cursando</span>
-                                <span class="carreira-card-dates" data-i18n="carreira.academica.card1.datas">Janeiro/2024 - Dezembro/2026</span>
-                            </div>
-                        </div>
-                        <div class="carreira-card">
-                            <h4 class="carreira-card-title" data-i18n="carreira.academica.card2.titulo">Cursando o ensino médio</h4>
-                            <p class="carreira-card-description" data-i18n="carreira.academica.card2.descricao">Cursando o ensino médio no Centro Universitário Adventista de São Paulo (UNASP), com previsão de conclusão em dezembro de 2026. O ensino médio está integrado ao curso técnico de Tecnologia da Informação, proporcionando uma formação completa e alinhada com as demandas do mercado.</p>
-                            <div class="carreira-card-meta">
-                                <span class="carreira-card-duration" data-i18n="carreira.academica.card2.duracao">Cursando</span>
-                                <span class="carreira-card-dates" data-i18n="carreira.academica.card2.datas">Janeiro/2024 - Dezembro/2026</span>
-                            </div>
-                        </div>
+                    <p class="sr-only" aria-live="polite" id="anuncio-copia"></p>
+                    <div class="contato-acoes" data-revelar>
+                        <a class="botao botao--primario" href="https://wa.me/5511975652841" target="_blank" rel="noopener noreferrer">
+                            <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#whatsapp"></use></svg>
+                            <span data-i18n="contato.whatsapp">WhatsApp</span>
+                        </a>
+                        <a class="botao botao--contorno" href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer">
+                            <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#linkedin"></use></svg>
+                            <span>LinkedIn</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <div class="section-divider"></div>
-
-    <section class="contato-section" id="contato">
-        <div class="container">
-            <div class="contato-badge">
-                <i class="fas fa-users contato-emoji" aria-label="Contatos"></i>
-                <span data-i18n="contato.badge">Contatos</span>
-            </div>
-            <h2 class="contato-title" data-i18n="contato.titulo">Vamos conversar!</h2>
-            
-            <div class="contato-content">
-                <a href="https://wa.me/5511975652841" target="_blank" rel="noopener noreferrer" class="contato-btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span data-i18n="contato.whatsapp">Vamos conversar</span>
-                </a>
-
-                <div class="contato-email-section">
-                    <div class="contato-email-icon">
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
-                    <div class="contato-email-info">
-                        <span class="contato-email-label" data-i18n="contato.emailLabel">E-mail:</span>
-                        <span class="contato-email-address" id="email-address">nickcarva31@gmail.com</span>
-                    </div>
-                    <button class="contato-email-copy" id="btn-copy-email" aria-label="Copiar e-mail">
-                        <i class="fas fa-copy"></i>
-                    </button>
-                </div>
-            </div>
-
-            <a href="#home" class="contato-voltar-topo" id="voltar-topo">
-                <i class="fas fa-arrow-up"></i>
-                <span data-i18n="contato.voltarTopo">Voltar ao topo</span>
+    <!-- ===================== Rodapé ===================== -->
+    <footer class="rodape">
+        <div class="container rodape-interno">
+            <p class="rodape-direitos">&copy; <span id="ano-atual">2026</span> Nicolas Carvalho</p>
+            <ul class="redes-mini">
+                <li><a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#linkedin"></use></svg></a></li>
+                <li><a href="https://github.com/Nickdevcode" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#github"></use></svg></a></li>
+                <li><a href="https://www.instagram.com/nickx.dev/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icone" aria-hidden="true"><use href="assets/icones.svg#instagram"></use></svg></a></li>
+            </ul>
+            <a class="link-seta" href="#home">
+                <span data-i18n="footer.topo">Voltar ao topo</span>
+                <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-cima"></use></svg>
             </a>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="footer-copyright"><span data-i18n="footer.copyright">Copyright © Nicolas Carvalho -</span> <span id="ano-atual"></span></p>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/nicolas-carva" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/Nickdevcode" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/nickx.dev/" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
         </div>
     </footer>
 
-    <!-- Modal Projeto -->
-    <div class="modal-overlay" id="modal-projeto">
-        <div class="modal-container modal-projeto-container">
-            <button class="modal-close" id="close-modal-projeto" aria-label="Fechar modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-projeto-content" id="modal-projeto-content">
-                <!-- Conteúdo será inserido via JavaScript -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Download CV -->
-    <div class="modal-overlay" id="modal-cv">
-        <div class="modal-container">
-            <button class="modal-close" id="close-modal-cv" aria-label="Fechar modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content">
-                <h2 class="modal-title" data-i18n="modal.cv.titulo">Baixar Currículo</h2>
-                <p class="modal-description" data-i18n="modal.cv.descricao">Escolha o idioma do currículo que deseja baixar:</p>
-                <div class="modal-buttons">
-                    <a href="assets/curriculo_nicolascarvalho.pdf" download class="modal-btn modal-btn-primary">
-                        <i class="fas fa-file-pdf"></i>
-                        <span data-i18n="modal.cv.portugues">Português</span>
-                    </a>
-                    <a href="assets/curriculo_nicolascarvalho_inglês.pdf" download class="modal-btn modal-btn-secondary">
-                        <i class="fas fa-file-pdf"></i>
-                        <span data-i18n="modal.cv.ingles">English</span>
-                    </a>
+    <!-- ===================== Modal de projeto ===================== -->
+    <dialog class="modal" id="modal-projeto" aria-labelledby="modal-titulo">
+        <div class="modal-caixa">
+            <header class="modal-topo">
+                <p class="modal-categoria" id="modal-categoria"></p>
+                <div class="modal-nav">
+                    <button class="botao-icone" type="button" data-modal-anterior data-i18n-attr="aria-label:portfolio.modal.anterior" aria-label="Projeto anterior">
+                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-esquerda"></use></svg>
+                    </button>
+                    <button class="botao-icone" type="button" data-modal-proximo data-i18n-attr="aria-label:portfolio.modal.proximo" aria-label="Próximo projeto">
+                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#seta-direita"></use></svg>
+                    </button>
+                    <button class="botao-icone" type="button" data-modal-fechar data-i18n-attr="aria-label:portfolio.modal.fechar" aria-label="Fechar">
+                        <svg class="icone" aria-hidden="true"><use href="assets/icones.svg#fechar"></use></svg>
+                    </button>
                 </div>
+            </header>
+            <div class="modal-midia" id="modal-midia"></div>
+            <div class="modal-corpo">
+                <h2 class="modal-titulo" id="modal-titulo"></h2>
+                <p class="modal-descricao" id="modal-descricao"></p>
+                <ul class="tags" id="modal-tags"></ul>
+                <div class="modal-acoes" id="modal-acoes"></div>
             </div>
         </div>
-    </div>
-
-    <!-- Modal Vamos Conversar -->
-    <div class="modal-overlay" id="modal-contato">
-        <div class="modal-container">
-            <button class="modal-close" id="close-modal-contato" aria-label="Fechar modal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content">
-                <h2 class="modal-title" data-i18n="modal.contato.titulo">Vamos Conversar</h2>
-                <p class="modal-description" data-i18n="modal.contato.descricao">Escolha como deseja entrar em contato:</p>
-                <div class="modal-buttons">
-                    <a href="https://wa.me/5511975652841" target="_blank" rel="noopener noreferrer" class="modal-btn modal-btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                        <span data-i18n="modal.contato.whatsapp">WhatsApp</span>
-                    </a>
-                    <a href="mailto:nickcarva31@gmail.com?subject=Contato%20via%20Portfólio&body=Olá%20Nicolas,%0D%0A%0D%0A" class="modal-btn modal-btn-email" id="btn-email">
-                        <i class="fas fa-envelope"></i>
-                        <span data-i18n="modal.contato.email">E-mail</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
+    </dialog>
 </body>
 </html>
-

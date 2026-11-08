@@ -1,0 +1,462 @@
+/* ==========================================================================
+   COMPONENTES REUTILIZÁVEIS: botões, alternadores, tags, filtros,
+   menu do CV, links com seta e o modal de projeto
+   ========================================================================== */
+
+/* ---------- Botão ---------- */
+.botao {
+    --botao-fundo: transparent;
+    --botao-texto: var(--c-tinta);
+    --botao-borda: var(--c-linha-forte);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--e-2);
+    min-height: 3.25rem;
+    padding: 0 var(--e-5);
+    border-radius: var(--raio-pilula);
+    border: 1px solid var(--botao-borda);
+    background: var(--botao-fundo);
+    color: var(--botao-texto);
+    font-weight: 620;
+    white-space: nowrap;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+        transform var(--dur-2) var(--ease-mola),
+        border-color var(--dur-2) var(--ease-padrao),
+        color var(--dur-2) var(--ease-padrao);
+}
+
+/* Preenchimento que sobe de baixo no hover */
+.botao::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--botao-preenchimento, var(--c-tinta));
+    transform: translateY(101%);
+    transition: transform var(--dur-3) var(--ease-saida);
+}
+
+.botao:hover::before {
+    transform: none;
+}
+
+.botao:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.botao .icone {
+    transition: transform var(--dur-2) var(--ease-mola);
+}
+
+.botao--primario {
+    --botao-fundo: var(--c-sinal);
+    --botao-texto: var(--c-sobre-sinal);
+    --botao-borda: var(--c-sinal);
+    --botao-preenchimento: var(--c-tinta);
+}
+
+.botao--primario:hover {
+    --botao-texto: var(--c-papel);
+    --botao-borda: var(--c-tinta);
+}
+
+.botao--contorno:hover {
+    --botao-texto: var(--c-papel);
+    --botao-borda: var(--c-tinta);
+}
+
+/* ---------- Botão só com ícone ---------- */
+.botao-icone {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--raio-pilula);
+    color: var(--c-tinta-2);
+    transition:
+        background-color var(--dur-2) var(--ease-padrao),
+        color var(--dur-2) var(--ease-padrao),
+        transform var(--dur-2) var(--ease-mola);
+}
+
+.botao-icone:hover {
+    background: var(--c-papel-2);
+    color: var(--c-tinta);
+}
+
+.botao-icone:active {
+    transform: scale(0.92);
+}
+
+.botao-icone .icone {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Sol/lua: mostra o ícone do tema PARA ONDE o clique leva */
+.icone-tema {
+    grid-area: 1 / 1;
+    transition: transform var(--dur-3) var(--ease-mola), opacity var(--dur-2) var(--ease-padrao);
+}
+
+.icone-tema--sol {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+}
+
+:root[data-tema='escuro'] .icone-tema--sol {
+    opacity: 1;
+    transform: none;
+}
+
+:root[data-tema='escuro'] .icone-tema--lua {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+/* ---------- Alternador de idioma (PT | EN) ---------- */
+.idioma {
+    position: relative;
+    display: inline-flex;
+    padding: 3px;
+    border-radius: var(--raio-pilula);
+    border: 1px solid var(--c-linha);
+    font-family: var(--f-mono);
+    font-size: var(--fs-mono);
+    font-weight: 500;
+    isolation: isolate;
+}
+
+.idioma-opcao {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.4rem;
+    height: 2.1rem;
+    border-radius: var(--raio-pilula);
+    color: var(--c-tinta-3);
+    transition: color var(--dur-2) var(--ease-padrao);
+}
+
+.idioma-opcao.ativo {
+    color: var(--c-papel);
+}
+
+/* Pílula que corre entre PT e EN */
+.idioma::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 3px;
+    left: 3px;
+    width: 2.4rem;
+    height: 2.1rem;
+    border-radius: var(--raio-pilula);
+    background: var(--c-tinta);
+    transition: transform var(--dur-3) var(--ease-mola);
+}
+
+:root[lang='en'] .idioma::before {
+    transform: translateX(100%);
+}
+
+.idioma:hover {
+    border-color: var(--c-linha-forte);
+}
+
+/* ---------- Tags de tecnologia ---------- */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.75rem;
+    padding: 0 var(--e-3);
+    border-radius: var(--raio-pilula);
+    border: 1px solid var(--c-linha);
+    color: var(--c-tinta-2);
+    font-family: var(--f-mono);
+    font-size: var(--fs-mono);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* ---------- Selo (status curto) ---------- */
+.selo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+    min-height: 1.6rem;
+    padding: 0 var(--e-3);
+    border-radius: var(--raio-pilula);
+    background: var(--c-papel-2);
+    color: var(--c-tinta);
+    font-family: var(--f-mono);
+    font-size: var(--fs-mono);
+    font-weight: 500;
+    line-height: 1;
+}
+
+.selo--sinal {
+    background: var(--c-sinal);
+    color: var(--c-sobre-sinal);
+}
+
+/* ---------- Filtros (grupo de pílulas) ---------- */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-2);
+}
+
+.filtro {
+    min-height: 2.5rem;
+    padding: 0 var(--e-4);
+    border-radius: var(--raio-pilula);
+    border: 1px solid var(--c-linha);
+    color: var(--c-tinta-2);
+    font-size: var(--fs-pequeno);
+    font-weight: 560;
+    transition:
+        background-color var(--dur-2) var(--ease-padrao),
+        border-color var(--dur-2) var(--ease-padrao),
+        color var(--dur-2) var(--ease-padrao),
+        transform var(--dur-2) var(--ease-mola);
+}
+
+.filtro:hover {
+    border-color: var(--c-linha-forte);
+    color: var(--c-tinta);
+}
+
+.filtro:active {
+    transform: scale(0.96);
+}
+
+.filtro[aria-pressed='true'] {
+    background: var(--c-tinta);
+    border-color: var(--c-tinta);
+    color: var(--c-papel);
+}
+
+/* ---------- Menu do CV ---------- */
+.menu-cv {
+    position: relative;
+}
+
+.icone-caret {
+    transition: transform var(--dur-3) var(--ease-mola);
+}
+
+[aria-expanded='true'] > .icone-caret {
+    transform: rotate(180deg);
+}
+
+.menu-cv-lista {
+    position: absolute;
+    top: calc(100% + var(--e-2));
+    left: 0;
+    z-index: 5;
+    min-width: 100%;
+    padding: var(--e-2);
+    border-radius: var(--raio-md);
+    border: 1px solid var(--c-linha);
+    background: var(--c-papel);
+    box-shadow: var(--sombra-2);
+    transform-origin: top left;
+}
+
+.menu-cv-lista:not([hidden]) {
+    animation: menu-abrir var(--dur-2) var(--ease-saida);
+}
+
+.menu-cv-lista a {
+    display: flex;
+    align-items: center;
+    gap: var(--e-3);
+    padding: var(--e-3) var(--e-4);
+    border-radius: var(--raio-sm);
+    font-weight: 560;
+    white-space: nowrap;
+    transition: background-color var(--dur-1) var(--ease-padrao);
+}
+
+.menu-cv-lista a:hover,
+.menu-cv-lista a:focus-visible {
+    background: var(--c-papel-2);
+}
+
+.menu-cv-lista .icone {
+    color: var(--c-sinal-texto);
+}
+
+@keyframes menu-abrir {
+    from {
+        opacity: 0;
+        transform: translateY(-6px) scale(0.97);
+    }
+}
+
+/* ---------- Link com seta ---------- */
+.link-seta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--e-2);
+    padding-block: var(--e-2);
+    font-weight: 600;
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0% 1px;
+    transition: background-size var(--dur-3) var(--ease-saida), color var(--dur-2) var(--ease-padrao);
+}
+
+.link-seta:hover {
+    background-size: 100% 1px;
+}
+
+.link-seta .icone:last-child {
+    transition: transform var(--dur-2) var(--ease-mola);
+}
+
+.link-seta:hover .icone:last-child {
+    transform: translate(2px, -2px);
+}
+
+/* ==========================================================================
+   MODAL DE PROJETO (<dialog> nativo)
+   ========================================================================== */
+.modal {
+    width: min(1040px, calc(100% - 2 * var(--calha)));
+    max-width: none;
+    max-height: calc(100dvh - 2 * var(--e-5));
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--c-linha);
+    border-radius: var(--raio-md);
+    background: var(--c-papel);
+    color: var(--c-tinta);
+    box-shadow: var(--sombra-3);
+    overflow: hidden;
+}
+
+.modal::backdrop {
+    background: var(--c-veu);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.modal[open] {
+    display: flex;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .modal[open] {
+        animation: modal-entrar var(--dur-3) var(--ease-saida);
+    }
+
+    .modal[open]::backdrop {
+        animation: aparecer var(--dur-2) var(--ease-padrao);
+    }
+}
+
+@keyframes modal-entrar {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+}
+
+.modal-caixa {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-linha-forte) transparent;
+}
+
+.modal-topo {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--e-4);
+    padding: var(--e-3) var(--e-3) var(--e-3) var(--e-5);
+    background: var(--c-papel);
+    border-bottom: 1px solid var(--c-linha);
+}
+
+.modal-categoria {
+    color: var(--c-tinta-3);
+    font-family: var(--f-mono);
+    font-size: var(--fs-mono);
+}
+
+.modal-nav {
+    display: flex;
+    gap: var(--e-1);
+}
+
+.modal-midia {
+    background: var(--c-papel-2);
+    aspect-ratio: 16 / 9;
+}
+
+.modal-midia video,
+.modal-midia img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modal-corpo {
+    display: grid;
+    gap: var(--e-4);
+    padding: var(--e-6) var(--e-5) var(--e-6);
+}
+
+.modal-titulo {
+    font-size: var(--fs-h3);
+    font-stretch: var(--largura-condensada);
+    font-weight: 820;
+    line-height: 1;
+}
+
+.modal-descricao {
+    max-width: 68ch;
+    color: var(--c-tinta-2);
+}
+
+.modal-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--e-3);
+    padding-top: var(--e-2);
+}
+
+@media (max-width: 640px) {
+    .modal {
+        width: 100%;
+        max-height: 100dvh;
+        height: 100dvh;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .modal-corpo {
+        padding: var(--e-5) var(--calha) var(--e-7);
+    }
+
+    .modal-acoes .botao {
+        flex: 1;
+    }
+}
